@@ -1,4 +1,10 @@
-Library/AnnotationManager
-Library/APIUpdater/project-dependencies.graph
-Library/ArtifactDB
-Library/ArtifactDB-lock
+# Unity temp files
+Temp/
+Logs/
+Library/
+Build/
+Builds/
+Obj/
+
+# Unity lock file
+Temp/UnityLockfile
