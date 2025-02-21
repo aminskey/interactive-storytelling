@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     //[SerializeField] Transform groundCheck;
     [SerializeField] Camera cam;
     [SerializeField] LayerMask mask;
-    //Animator player_anim;
+    Animator player_anim;
     Rigidbody rb;
     Vector3 d;
     //PlayerHealthScript phs;
@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         cm = GetComponent<CameraScript>();
 
-        //player_anim = GetComponent<Animator>();
+        player_anim = GetComponent<Animator>();
         //phs = GetComponent<PlayerHealthScript>();
         startSpeed = speed;
         //Cursor.visible = false;
@@ -41,18 +41,7 @@ public class PlayerMovement : MonoBehaviour
         float vert = Input.GetAxis("Vertical");
 
         d = transform.forward * vert + transform.right * horiz;
-        /*
-        if(Input.GetButton("Jump") && isGrounded() && !player_anim.GetBool("IsDucking")){
-            Jump(jumpFactor);
-        }
-        if(Input.GetKey(KeyCode.LeftShift)){
-            player_anim.SetBool("IsMoving", false);
-            player_anim.SetBool("IsDucking", true);
-        } else {
-            player_anim.SetBool("IsDucking", false);
-            rb.velocity = d * speed + new Vector3(0f, rb.velocity.y, 0f);
-        }
-        */
+
         rb.velocity = d * speed + new Vector3(0f, rb.velocity.y, 0f);
         if (Input.GetKey(KeyCode.LeftControl)){
             jumpFactor = 2f;
@@ -62,14 +51,14 @@ public class PlayerMovement : MonoBehaviour
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 60f, 20f*Time.deltaTime);
         }
 
-        /*
+        
         if(d != Vector3.zero){
             player_anim.SetBool("IsMoving", true);
             //Look();
         } else {
             player_anim.SetBool("IsMoving", false);
         }
-        */
+        
     }
 
     void Look(){
