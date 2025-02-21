@@ -1,0 +1,10 @@
+# Unity temp files
+Temp/
+Logs/
+Library/
+Build/
+Builds/
+Obj/
+
+# Unity lock file
+Temp/UnityLockfile
