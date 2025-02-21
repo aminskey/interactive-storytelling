@@ -53,7 +53,8 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = d * speed + new Vector3(0f, rb.velocity.y, 0f);
         }
         */
-        if(Input.GetKey(KeyCode.LeftControl)){
+        rb.velocity = d * speed + new Vector3(0f, rb.velocity.y, 0f);
+        if (Input.GetKey(KeyCode.LeftControl)){
             jumpFactor = 2f;
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 70f, 20f*Time.deltaTime);
         } else {
