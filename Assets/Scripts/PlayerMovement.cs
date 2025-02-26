@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         player_anim = GetComponent<Animator>();
         //phs = GetComponent<PlayerHealthScript>();
         startSpeed = speed;
-        //Cursor.visible = false;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float horiz = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
+        bool state = player_anim.GetBool("DrawingSword");
 
         d = transform.forward * vert + transform.right * horiz;
 
@@ -57,6 +58,10 @@ public class PlayerMovement : MonoBehaviour
             //Look();
         } else {
             player_anim.SetBool("IsMoving", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.E)) {
+            player_anim.SetBool("DrawingSword", !state);
         }
         
     }
