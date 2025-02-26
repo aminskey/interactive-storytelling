@@ -440,7 +440,10 @@ PrefabInstance:
       value: "fyrt\xF8jetscene"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -7677471772335586173, guid: dbaed2ae8ef7e05489c1992f8de8ef01, type: 3}
+    - {fileID: -5568371526223589888, guid: dbaed2ae8ef7e05489c1992f8de8ef01, type: 3}
+    - {fileID: 8513859187771203891, guid: dbaed2ae8ef7e05489c1992f8de8ef01, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dbaed2ae8ef7e05489c1992f8de8ef01, type: 3}
