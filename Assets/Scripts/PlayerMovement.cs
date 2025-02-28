@@ -9,7 +9,9 @@ public class PlayerMovement : MonoBehaviour
     //[SerializeField] Transform groundCheck;
     [SerializeField] Camera cam;
     [SerializeField] LayerMask mask;
-    Animator player_anim;
+
+    public Animator player_anim;
+    
     Rigidbody rb;
     Vector3 d;
     //PlayerHealthScript phs;
@@ -39,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
     {
         float horiz = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
+
+
         bool state = player_anim.GetBool("DrawingSword");
 
         d = transform.forward * vert + transform.right * horiz;
@@ -63,7 +67,27 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E)) {
             player_anim.SetBool("DrawingSword", !state);
         }
-        
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (!state) {
+                player_anim.SetBool("DrawingSword", !state);
+            }
+            player_anim.SetBool("StabMode", true);            
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (!state)
+            {
+                player_anim.SetBool("DrawingSword", !state);
+            }
+            player_anim.SetBool("BlockMode", true);
+        }
+        if (Input.GetMouseButtonUp(1) && state)
+        {
+            player_anim.SetBool("BlockMode", false);
+        }
+
     }
 
     void Look(){
@@ -77,6 +101,11 @@ public class PlayerMovement : MonoBehaviour
     void Jump(float factor){
         rb.velocity = new Vector3(rb.velocity.x, jumpForce*factor, rb.velocity.z);
     }
+
+    void SetFalse(string anim) {
+        player_anim.SetBool(anim, false);
+    }
+
     /*
     bool isGrounded(){
         return Physics.CheckSphere(groundCheck.position, 0.2f, mask);
